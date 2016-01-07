@@ -52,6 +52,7 @@ class Server():
 		self._route()
 		
 		# Init MessageHub Topic & requests session
+		self.topicName = self.options['org'] + "-events"
 		self._createTopic()
 		self.session = FuturesSession()
 		
@@ -86,7 +87,7 @@ class Server():
 			'records': [{"value": json.dumps(message)}]
 		}
 		
-		future = self.session.post(self.messagehubUrl + "/topics/events", data=json.dumps(payload), headers=headers)
+		future = self.session.post(self.messagehubUrl + "/topics/" + self.topicName, data=json.dumps(payload), headers=headers)
 		future.add_done_callback(self._eventRecordedCallback)
 	
 	
@@ -118,7 +119,7 @@ class Server():
 			"Content-Type": "application/json", 
 			"X-Auth-Token": self.messagehubApikey
 		}
-		payload = {"name": "events"}
+		payload = {"name": self.topicName}
 		
 		r = requests.post(self.messagehubUrl + "/admin/topics", data=json.dumps(payload), headers=headers)
 		print(r.text)
