@@ -1,13 +1,13 @@
-# IoTF MessageHub Connector
+# Watson IoT MessageHub Connector
 
 ## Overview
-The application will automatically create a topic in the specified MessageHub account in the format **``orgId``-events**.  On that topic the application will publish a new message for every event submitted by your IoTF devices.
+The application will automatically create a topic in the specified MessageHub account in the format **``orgId``-events**.  On that topic the application will publish a new message for every event submitted by your Watson IoT devices.
 
-- [Internet of Things Foundation](https://internetofthings.ibmcloud.com)
+- [IBM Watson IoT](https://internetofthings.ibmcloud.com)
 - MessageHub
 
 ### Scalability
-The application is scalabale both horizontally and vertically, you can either allocate more resources to the runtime or deploy more instances of the application as the number of events you need to process increases.  As you deploy new instances of the application IoTF will automatically distribute incoming events across your application instances.
+The application is scalabale both horizontally and vertically, you can either allocate more resources to the runtime or deploy more instances of the application as the number of events you need to process increases.  As you deploy new instances of the application Watson IoT will automatically distribute incoming events across your application instances.
 
 ### Message Format
 Each event will be recorded as a single message in JSON format with the following elements:
@@ -22,20 +22,20 @@ Each event will be recorded as a single message in JSON format with the followin
 ### Example Document
 ```json
 {
-  data: {
-    mem: 9.1,
-    cpu: 1.8,
-    network: {
-      up: 0.02,
-      down: 0.68
+  "data": {
+    "mem": 9.1,
+    "cpu": 1.8,
+    "network": {
+      "up": 0.02,
+      "down": 0.68
     }
   },
-  payload: "eyJtZW0iOiA5LjEsICJjcHUiOiAxLjgsICJuZXR3b3JrIjogeyJkb3duIjogMC42OCwgInVwIjog MC4wMn19 ",
-  deviceId: "iot-test-01",
-  eventId: "psutil",
-  typeId: "vm",
-  format: "json",
-  timestamp: "2016-01-06T19:41:32.108595+00:00"
+  "payload": "eyJtZW0iOiA5LjEsICJjcHUiOiAxLjgsICJuZXR3b3JrIjogeyJkb3duIjogMC42OCwgInVwIjog MC4wMn19 ",
+  "deviceId": "iot-test-01",
+  "eventId": "psutil",
+  "typeId": "vm",
+  "format": "json",
+  "timestamp": "2016-01-06T19:41:32.108595+00:00"
 }
 ```
 
