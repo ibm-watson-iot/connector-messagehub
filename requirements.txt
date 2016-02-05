@@ -1,3 +1,0 @@
-ibmiotf
-bottle
-cloudant

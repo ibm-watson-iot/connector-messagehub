@@ -1,0 +1,15 @@
+applications:
+- name: Connector-MessageHub
+  buildpack: java_buildpack
+  instances: 1
+  memory: 256M
+  disk_quota: 256M
+  path: build/distributions/Connector-MessageHub-1.0.zip
+  no-route: true
+  env:
+    MH_EVENT_TOPIC: event_topic
+    MH_AUTO_CREATE_TOPIC: 1
+    MH_TOPIC_PARTITIONS: 1
+  services:
+  - "messagehub"
+  - "iotf"

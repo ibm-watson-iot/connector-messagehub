@@ -1,6 +1,0 @@
-applications:
-- command: python connector-messagehub.py --bluemix
-  path: .
-  instances: 2
-  memory: 256M
-  buildpack: https://github.com/cloudfoundry/python-buildpack
