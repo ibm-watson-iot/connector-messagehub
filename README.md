@@ -64,8 +64,8 @@ $ cf login -u <username> -p <password> -o <org> -s <space>
 #### Optionally, create the required services
 If you do not already have an instance of the Watson IoTF and Message Hub services you will need to set one of each up. Otherwise, you can skip these commands, but you must update the `services:` entry of the **manifest.yml** file to specify the appropriate names of your Watson IoT and Message Hub services, or the application will not be able to bind to these services correctly.
 ```bash
-$ cf create-service iotf-service iotf-service-free <iotf_instance_name>
-$ cf create-service messagehub standard <messagehub_instance_name>
+$ cf create-service iotf-service iotf-service-free iotf
+$ cf create-service messagehub standard messagehub
 ```
 
 #### Deploy the application to Bluemix
