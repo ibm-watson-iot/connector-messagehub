@@ -23,6 +23,7 @@ targetCompatibility = 1.7
 version = '1.0'
 
 repositories {
+    mavenCentral()
 
 	// read from lib/ directory
 	flatDir {
@@ -34,17 +35,28 @@ dependencies {
 	compile 'org.apache.kafka:kafka-clients:0.9.0.0'
 	compile 'log4j:log4j:1.2.17'
     compile 'org.slf4j:slf4j-log4j12:1.7.6'
-    compile 'org.slf4j.api:slf4j-api-1.7.6'	
-	compile 'gson:gson-2.2.4'
-	compile 'paho:org.eclipse.paho.client.mqttv3-1.0.3-20150818.040635-202'
-	compile 'messagehub.login:messagehub.login-1.0.0'
-	compile 'jacksoncore:jackson-core-2.7.0-rc1'
-	compile 'jacksonannotations:jackson-annotations-2.7.0-rc1'
-	compile 'jacksondatabind:jackson-databind-2.7.0-rc1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.0-rc1'
+	compile 'com.google.code.gson:gson:2.2.4'
+	compile 'org.eclipse.paho:org.eclipse.paho.mqtt.utility:1.0.2'
+	compile fileTree(dir: 'lib-message-hub', include: ['*.jar'])	
 }
 
 compileJava {
+
+    doFirst {
+        copy {
+            from configurations.runtime
+            into 'lib'
+        }
+
+        copy {
+            from 'lib-message-hub'
+            into 'lib'
+        }
+    }
+
 	source = 'src'
+    options.encoding = 'ISO-8859-1'
 }
 
 jar {   
@@ -69,6 +81,15 @@ jar {
     manifest {
         attributes('Main-Class': mainClassName,
         'Class-Path': '. ./ ./lib ' + configurations.runtime.files.collect { './lib/' + it.name }.join(' '))
+    }
+}
+
+// Save JAR in build directory.
+uploadArchives {
+    repositories {
+        flatDir {
+            dirs 'build'
+        }
     }
 }
 
