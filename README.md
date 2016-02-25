@@ -56,9 +56,9 @@ $ ./gradlew clean && ./gradlew build
 ```
 
 #### Login to Bluemix using the `cf` tool
-Before you can create services and push the application to Bluemix, you must login to your Bluemix account.
+Before you can create services and push the application to Bluemix, you must login to your Bluemix account (example below connects to Bluemix us-south region).
 ```bash
-$ cf login -u <username> -p <password> -o <org> -s <space>
+$ cf login -a https://api.ng.bluemix.net -u <username> -p <password> -o <org> -s <space>
 ```
 
 #### Optionally, create the required services
