@@ -12,6 +12,9 @@ If `MH_EVENT_TOPIC` does not exist in the Message Hub account, and `MH_AUTO_CREA
 - [IBM Watson IoT](https://internetofthings.ibmcloud.com)
 - [IBM Message Hub](https://developer.ibm.com/messaging/message-hub/)
 
+## Product Withdrawal Notice
+Per the September 8, 2020 [announcement](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS920-136#rprodnx) IBM Watson IoT Platform (5900-A0N) has been withdrawn from marketing effective **December 9, 2020**.  As a result, updates to this project will be limited.
+
 ### Scalability
 The application is scalabale both horizontally and vertically, you can either allocate more resources to the runtime or deploy more instances of the application as the number of events you need to process increases.  As you deploy new instances of the application Watson IoT will automatically distribute incoming events across your application instances.  
 
